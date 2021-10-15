@@ -1,6 +1,8 @@
 # Oct 2021 by c.l.becke@outlook.com ===================================
 # A pre-processor for OMRON format data files, for use
-# with the process_data() function of the 'bp' package. 
+# with the process_data() function of the 'bp' package.
+
+# commit 1
 
 # install first if necessary
 library(tidyverse)
