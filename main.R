@@ -1,12 +1,9 @@
-# Oct 2021 by c.l.becke@outlook.com ===================================
+# Oct 2021 by c.l.becker@outlook.com ===================================
 # A pre-processor for OMRON format data files, for use
 # with the process_data() function of the 'bp' package.
 
-# commit 1
-
 # install first if necessary
 library(tidyverse)
-library(lubridate)
 library(bp)
 
 rm(list=ls())  # clean up
@@ -15,12 +12,10 @@ rm(list=ls())  # clean up
 bp_data_file <- file.choose()
 
 # or hard code a file name for batch processing, etc:
-# bp_data_file <- (".\Data\CLB_10_13_2021.csv")
+# bp_data_file <- (".\Data\10_13_2021.csv")
 
-bpx <- read_csv(bp_data_file)
-
-bpx$Date <- as.Date(bpx$Date, format='%B %d, %Y')
-
+bpx <- read_csv(bp_data_file) %>% rename( OrigDate = Date )
+bpx$Date <- as.Date(bpx$OrigDate, format='%B %d, %Y')
 View(bpx)
 
 bpz <- process_data( bpx,
