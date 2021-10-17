@@ -12,7 +12,7 @@ rm(list=ls())  # clean up
 bp_data_file <- file.choose()
 
 # or hard code a file name for batch processing, etc:
-# bp_data_file <- (".\Data\10_13_2021.csv")
+# bp_data_file <- (".\Data\an_OMRON_data_file.csv")
 
 bpx <- read_csv(bp_data_file) %>% rename( OrigDate = Date )
 bpx$Date <- as.Date(bpx$OrigDate, format='%B %d, %Y')
