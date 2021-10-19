@@ -12,15 +12,17 @@ rm(list=ls())  # clean up
 bp_data_file <- file.choose()
 
 # or hard code a file name for batch processing, etc:
-# bp_data_file <- (".\Data\an_OMRON_data_file.csv")
+# bp_data_file <- (".\Data\AnOMRONFormatDataFile.csv")
 
 bpx <- read_csv(bp_data_file) %>% rename( OrigDate = Date )
 bpx$Date <- as.Date(bpx$OrigDate, format='%B %d, %Y')
+bpx$Systolic <- bpx$"Systolic (mmHg)"
+bpx$Diastolic <- bpx$"Diastolic (mmHg)"
 View(bpx)
 
 bpz <- process_data( bpx,
-                     sbp = 'Systolic',
-                     dbp = 'Diastolic',
+                     sbp = "Systolic",
+                     dbp = "Diastolic",
                      bp_type = "HBPM",
                      )
 
